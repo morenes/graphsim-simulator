@@ -1879,7 +1879,7 @@ void asic::read_graph_structure(string file, int *offset, edge_info *neighbor, b
     // cout << "string read: " << raw << endl;
     wgt = 0;
     // char ignore;
-    if (is_csc_file || _graph_vertices == 23947347 || _graph_vertices == 6262104)
+    if (is_csc_file || (_graph_vertices != 2708) ) //_graph_vertices == 23947347 || _graph_vertices == 6262104)
     {
       iss >> src >> dst >> wgt;
       // if(_config->_algo!=cf) {
@@ -4683,7 +4683,9 @@ void asic::print_stats()
     cout << "Ideal hetro cycles: " << ideal_hetro_cycles << " ideal homo cycles: " << ideal_homo_cycles << endl;
   }
   cout << "Boundary cycles: " << _bdary_cycles << endl;
-  cout << "Total cycles: " << (final_cycles + (_global_iteration * _graph_vertices * 8 / 512)) << endl;
+  //cout << "Total cycles: " << (final_cycles + (_global_iteration * _graph_vertices * 8 / 512)) << endl;
+  // To match our reporting in K cycles
+  cout << "Total K cycles: " << (final_cycles + (_global_iteration * _graph_vertices * 8 / 512) ) / 1000 << endl;
   _mem_ctrl->print_mem_ctrl_stats();
   cout << "tasks created online: " << _stats->_stat_online_tasks << endl;
   float time = final_cycles / 1; // 1.25; // in ns
