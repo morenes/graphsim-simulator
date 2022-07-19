@@ -638,45 +638,45 @@ sim-preprocess: preprocess.cpp
 	./$(OUTFILE)
 
 sim-graphmat: $(sim-files) *.hh $(@)
-	$(CC) $(sim-files) $(FLAGS) $(MACROS)  -L/home/vidushi/graphsim/DRAMSim2/ -ldramsim -o $(OUTFILE) -DGRAPHMAT
+	$(CC) $(sim-files) $(FLAGS) $(MACROS)  -L${GRAPHSIM}/DRAMSim2/ -ldramsim -o $(OUTFILE) -DGRAPHMAT
 	./$(OUTFILE)
 
 sim-graphmat-slice: $(sim-files) *.hh $(@)
-	$(CC) $(sim-files) $(FLAGS) $(MACROS)  -L/home/vidushi/graphsim/DRAMSim2/ -ldramsim -o $(OUTFILE) -DGRAPHMAT -DGRAPHMAT_SLICING
+	$(CC) $(sim-files) $(FLAGS) $(MACROS)  -L${GRAPHSIM}/DRAMSim2/ -ldramsim -o $(OUTFILE) -DGRAPHMAT -DGRAPHMAT_SLICING
 	./$(OUTFILE)
 
 sim-polygraph: $(sim-files) *.hh $(@)
-	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L/home/vidushi/graphsim/DRAMSim2/ -ldramsim -o $(OUTFILE) -DSGU -DSGU_SLICING
+	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L${GRAPHSIM}/DRAMSim2/ -ldramsim -o $(OUTFILE) -DSGU -DSGU_SLICING
 	./$(OUTFILE)
 
 # iterations in a round-robin manner (scheduling is done offline only), only
 # slicing (must be a different cycle function) -- no abort
 sim-blocked-async: $(sim-files) *.hh $(@)
-	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L/home/vidushi/graphsim/DRAMSim2/ -ldramsim -o $(OUTFILE) -DBLOCKED_ASYNC
+	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L${GRAPHSIM}/DRAMSim2/ -ldramsim -o $(OUTFILE) -DBLOCKED_ASYNC
 	./$(OUTFILE)
 
 
 sim-tesseract: $(sim-files) *.hh $(@)
-	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L/home/vidushi/graphsim/DRAMSim2/ -ldramsim -o $(OUTFILE) -DGRAPHMAT -DTESSERACT
+	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L${GRAPHSIM}/DRAMSim2/ -ldramsim -o $(OUTFILE) -DGRAPHMAT -DTESSERACT
 	./$(OUTFILE)
 
 sim-sgu: $(sim-files) *.hh $(@)
-	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L/home/vidushi/graphsim/DRAMSim2/ -ldramsim -o $(OUTFILE) -DSGU
+	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L${GRAPHSIM}/DRAMSim2/ -ldramsim -o $(OUTFILE) -DSGU
 	./$(OUTFILE)
 
 # currently works only for PRAC=0
 sim-sgu-hybrid: $(sim-files) *.hh $(@)
-	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L/home/vidushi/graphsim/DRAMSim2/ -ldramsim -o $(OUTFILE) -DSGU -DSGU_HYBRID
+	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L${GRAPHSIM}/DRAMSim2/ -ldramsim -o $(OUTFILE) -DSGU -DSGU_HYBRID
 	./$(OUTFILE)
 
 # need to include libdramsim.so
 
 sim-espresso: $(sim-files) *.hh $(@)
-	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L/home/vidushi/graphsim/DRAMSim2/ -ldramsim -o $(@) -DESPRESSO
+	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L${GRAPHSIM}/DRAMSim2/ -ldramsim -o $(@) -DESPRESSO
 	./$(@)
 
 sim-swarm: $(sim-files) *.hh $(@)
-	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L/home/vidushi/graphsim/DRAMSim2/ -ldramsim -o $(OUTFILE) -DSWARM
+	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L${GRAPHSIM}/DRAMSim2/ -ldramsim -o $(OUTFILE) -DSWARM
 	./$(OUTFILE)
 
 sim-graphlab: $(sim-files) *.hh $(@)
@@ -684,7 +684,7 @@ sim-graphlab: $(sim-files) *.hh $(@)
 	./$(@)
 
 sim-dijkstra: $(sim-files) *.hh $(@)
-	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L/home/vidushi/graphsim/DRAMSim2/ -ldramsim -o $(@) -DDIJKSTRA
+	$(CC) $(sim-files) $(FLAGS) $(MACROS) -L${GRAPHSIM}/DRAMSim2/ -ldramsim -o $(@) -DDIJKSTRA
 	./$(@)
 
 clean:

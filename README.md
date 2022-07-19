@@ -1,15 +1,25 @@
 ## Source file information
 1. Currently Makefile is set to asynchronousupdates/priority-vertex-scheduling/graph-slicing PolyGraph model.
-2. To run, first build DRAMSim2: `make libdramsim.so` and do `export LD_LIBRARY_PATH=path-to-dramsim2-folder/:$LD_LIBRARY_PATH` (you may put this in bashrc)
+2. To run, first build DRAMSim2: 
+
+        cd DRAMSim2/
+        make libdramsim.so
+
+    And add it to the LD PATH (you may put this in bashrc)
+
+        export GRAPHSIM=$PWD
+        export LD_LIBRARY_PATH=$GRAPHSIM/DRAMSim2/:$LD_LIBRARY_PATH
+    
+
 3. Let's try a simple example using cora dataset in `sample_dataset` folder (format: src dst):
 ```
-make sim-polygraph csr_file=\\\"/home/vidushi/graphsim-simulator/sample_datasets/cora_csr\\\"  V=2708 E=10556
+make sim-polygraph csr_file=\\\"$GRAPHSIM/sample_datasets/cora_csr\\\"  V=2708 E=10556
 ```
 For other variants, find details below:
 
 4. PolyGraph with cache of 4 MB (4096 kB) for uniform-degree graphs:
 ```
-make sim-polygraph csr_file=\\\"/home/vidushi/graphsim-simulator/sample_datasets/cora_csr\\\"  V=2708 E=10556 WORKING_CACHE=1 L2SIZE=4096
+make sim-polygraph csr_file=\\\"$GRAPHSIM/sample_datasets/cora_csr\\\"  V=2708 E=10556 WORKING_CACHE=1 L2SIZE=4096
 ```
 
 Note: The heuristic graph is not encoded in the simulator properly yet, the programmer specifies which variant to use, when to switch dynamically (later one is a little complex, please contact for more details).
