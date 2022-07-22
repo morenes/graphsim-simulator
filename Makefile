@@ -142,7 +142,7 @@ endif
 # ------------relevant parameters for ideal experiments
 
 ifndef EPSILON
-EPSILON=1000
+EPSILON=10
 endif
 
 ifndef INTERTASK_REORDER

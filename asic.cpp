@@ -2241,6 +2241,12 @@ bool asic::correctness_check()
   {
     _vertex_data[i] = _scratch[i];
   }
+
+  // for (int i = 0; i < _graph_vertices; ++i)
+  // {
+  //   cout << _vertex_data[i] << "\n";
+  // }
+
   for (int i = 0; i < _graph_vertices; ++i)
   {
     if (_vertex_data[i] != _correct_vertex_data[i])
@@ -5076,7 +5082,11 @@ DTYPE asic::process(DTYPE edge_wgt, DTYPE dist)
   }
   else
   { // same for bfs,sssp,astar
-    return edge_wgt + dist;
+    if(_config->_algo==cc) {
+      return dist;
+    } else {
+      return edge_wgt + dist;
+    }
   }
 }
 
@@ -5110,6 +5120,7 @@ DTYPE asic::apply(DTYPE new_dist, int updated_vid)
     }
     int degree = _offset[updated_vid + 1] - _offset[updated_vid];
     DTYPE x = degree / (DTYPE)new_dist;
+    //DTYPE x = ((DTYPE) new_dist) / degree;
     assert(x >= 0);
     return x;
   }
